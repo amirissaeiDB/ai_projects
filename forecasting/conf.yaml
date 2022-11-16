@@ -1,0 +1,82 @@
+data:
+  dollar_dbu_non_pvc_database: "finance"
+  dollar_dbu_non_pvc_table: "dbu_dollars"
+  dollar_dbu_pvc_database: "finance"
+  dollar_dbu_pvc_table: 
+    pvc: "pvc_usage"
+    pubsec: "pubsec_usage"
+  temp_database: 'ai'
+  temp_table:
+    temp_table_non_pvc: 'dollar_dbu'
+    temp_table_pvc: 'pvc_temp'
+  future_data_database: 'ai'
+  future_data_table: 'future_data'
+
+model:
+  non_pvc:
+    horizon: 124
+    hyperparameter_budget: 1200
+  pvc:
+    horizon: 4
+    hyperparameter_budget: 1200
+
+
+
+run:
+  start_date: "'2018-01-01'"
+curve_ind: 0
+curves:
+  2021_growth:
+    amer_enterprise: "42743.2*exp(0.00196818*rn)"
+    amer_gsc: "10643*exp(0.00180864*rn)"
+    amer_regulated_verticals: "31718.3*exp(0.00121407*rn)"
+    digital_native: "401.117*exp(0.0031056*rn)"
+    emea: "38329.9*exp(0.00154861*rn)"
+    apj: "6599.67*exp(0.00201591*rn)"
+    microsoft_house_account: "2.7645*rn+2999.34"
+
+  2020_growth:
+    amer_enterprise: "59431.5*exp(0.00171406*rn)"
+    amer_gsc: "16011.6*exp(0.00149412*rn)"
+    amer_regulated_verticals: "22679.9*exp(0.00146676*rn)"
+    digital_native: "1600.15*exp(0.00206556*rn)"
+    emea: "23355.8*exp(0.00191905*rn)"
+    apj: "143.127*rn + -90744.8"
+    microsoft_house_account: "2.96883*rn + 2701.16"
+  
+  2019_growth:  
+    amer_enterprise: "44654.3*exp(0.00196231*rn)"
+    amer_gsc: "0.000105153*rn*rn*rn + -0.18427*rn*rn + 145.72*rn + 4200.95"
+    amer_regulated_verticals: "16431.3*exp(0.00173628*rn)"
+    digital_native: "0.000000089276*rn*rn*rn*rn + -0.000248693*rn*rn*rn + 0.244611*rn*rn + -87.9431*rn + 14678.4"
+    emea: "17218.9*exp(0.00217947*rn)"
+    apj: "4716.85*exp(0.00227276*rn)"
+    microsoft_house_account: "1011.98*exp(0.00150213*rn)"
+    
+  2018_growth:
+    amer_enterprise: "0.000254072*rn*rn*rn + -0.233041*rn*rn + 318.009*rn + -8875.08"
+    amer_gsc: "0.0000791184*rn*rn*rn + -0.115969*rn*rn + 93.5843*rn + 14639"
+    amer_regulated_verticals: "10487*exp(0.00215536*rn)"
+    digital_native: "0.00000658429*rn*rn*rn*rn + -0.000163909*rn*rn*rn + 0.137577*rn*rn + -33.1267*rn + 5285.19"
+    emea: "0.0000493116*rn*rn*rn + 0.0747658*rn*rn + 41.523*rn + 3042.51"
+    apj: "3048.11*exp(0.0026758*rn)"
+    microsoft_house_account: "5.6379*rn-418.89"
+bu: 
+  non_pvc:
+    - "'AMER Enterprise'"
+    - "'AMER GSC'"
+    - "'AMER Regulated Verticals'" 
+    - "'Digital Native'" 
+    - "'EMEA'"
+    - "'APJ'" 
+    - "'Microsoft House Account'"
+  pvc:
+    - "'AMER Enterprise'"
+    - "'AMER GSC'"
+    - "'AMER Regulated Verticals'" 
+    - "'Digital Native'" 
+    - "'EMEA'"
+
+
+
+
